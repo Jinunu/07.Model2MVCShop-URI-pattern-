@@ -3,40 +3,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--
-<%@page import="com.model2.mvc.service.purchase.vo.PurchaseVO"%>
-<%@ page import="java.util.*"  %>
-<%@ page import="com.model2.mvc.service.product.vo.*" %>
-<%@ page import="com.model2.mvc.common.*" %>
- 
-<%
-	HashMap<String,Object> map=(HashMap<String,Object>)request.getAttribute("map");
-	//Search searchVO=(Search)request.getAttribute("searchVO");
-	
-	int total=0;
-	ArrayList<PurchaseVO> list=null;
-	if(map != null){
-		total=((Integer)map.get("count")).intValue();
-		list=(ArrayList<PurchaseVO>)map.get("list");
-	}
-	
-	int currentPage=searchVO.getPage();
-	
-	int totalPage=0;
-	if(total > 0) {
-		totalPage= total / searchVO.getPageUnit() ;
-		if(total%searchVO.getPageUnit() >0)
-	totalPage += 1;
-	}
-	
-	//String menu = (String)request.getAttribute("menu");
-	//String menu = (String)session.getAttribute("menu");
-	//System.out.println("list 세션  JSP의 : "+menu);
-%>
---%>
-
-
-
 <html>
 <head>
 <title>구매 목록조회</title>
@@ -50,7 +16,7 @@ function fncGetPurchaseList(currentPage) {
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <div style="width: 98%; margin-left: 10px;">
-<form name="detailForm" action="/listPurchase.do" method="post">
+<form name="detailForm" action="/purchase/listPurchase" method="post">
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td width="15" height="37"><img src="/images/ct_ttl_img01.gif"width="15" height="37"></td>
@@ -97,11 +63,11 @@ function fncGetPurchaseList(currentPage) {
 <c:set var="i" value="${i+1 }"/>
 <tr class="ct_list_pop">
 <td align="center">
-<a href="/getPurchase.do?tranNo=${purchase.tranNo}">${i }</a>
+<a href="/purchase/getPurchase?tranNo=${purchase.tranNo}">${i }</a>
 </td>
 <td></td>
 <td align="left">
-<a href="/getUser.do?userId=${purchase.buyer.userId}">${purchase.buyer.userId}</a>
+<a href="/user/getUser?userId=${purchase.buyer.userId}">${purchase.buyer.userId}</a>
 </td>
 <td></td>
 <td align="left">${user.userName}</td>
@@ -127,7 +93,7 @@ function fncGetPurchaseList(currentPage) {
 </c:choose>
 
 <c:if test="${ !empty purchase.tranCode && purchase.tranCode eq '1  ' }">
-<td align="left"><a href="/updateTranCode.do?tranCode=${purchase.tranCode}&prodNo=${purchase.purchaseProd.prodNo}">물건도착</a></td>
+<td align="left"><a href="/purchase/updateTranCode?tranCode=${purchase.tranCode}&prodNo=${purchase.purchaseProd.prodNo}">물건도착</a></td>
 </c:if>
 
 </tr>

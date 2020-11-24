@@ -1,10 +1,11 @@
 package com.model2.mvc.service.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
 //==>회원정보를 모델링(추상화/캡슐화)한 Bean
-public class User {
+public class User implements Serializable {
 	
 	///Field
 	private String userId;

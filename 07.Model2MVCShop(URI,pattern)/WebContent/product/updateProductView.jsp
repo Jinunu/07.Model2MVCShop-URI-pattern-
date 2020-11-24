@@ -49,7 +49,7 @@ function fncAddProduct(){
 		return;
 	}
 		
-	document.detailForm.action='/updateProduct.do?menu=${menu}';
+	document.detailForm.action='/product/updateProduct?menu=${menu}';
 	document.detailForm.submit();
 }
 

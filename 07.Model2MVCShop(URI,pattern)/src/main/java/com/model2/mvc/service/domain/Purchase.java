@@ -1,12 +1,13 @@
 package com.model2.mvc.service.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.domain.Product;
 
 
-public class Purchase {
+public class Purchase implements Serializable {
 	
 	private User buyer;
 	private String divyAddr;

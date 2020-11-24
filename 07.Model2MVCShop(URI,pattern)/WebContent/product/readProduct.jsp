@@ -155,10 +155,10 @@
 					
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
 						<c:if test="${menu =='manage' }">
-						<a href="/listProduct.do?menu=manage">확인</a>
+						<a href="/product/listProduct?menu=manage">확인</a>
 						</c:if>
 						<c:if test="${menu=='search' and product.proTranCode==null }">
-						<a href="/addPurchaseView.do?prodNo=${product.prodNo}">구매</a>
+						<a href="/purchase/addPurchase?prodNo=${product.prodNo}">구매</a>
 						
 					</td>
 					

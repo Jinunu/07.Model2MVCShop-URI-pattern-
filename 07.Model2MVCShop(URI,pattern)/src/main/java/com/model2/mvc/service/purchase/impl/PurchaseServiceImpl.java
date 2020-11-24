@@ -1,4 +1,4 @@
-package com.model2.mvc.service.purcahse.impl;
+package com.model2.mvc.service.purchase.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Purchase;
-import com.model2.mvc.service.purcahse.PurchaseDao;
-import com.model2.mvc.service.purcahse.PurchaseService;
+import com.model2.mvc.service.purchase.PurchaseDao;
+import com.model2.mvc.service.purchase.PurchaseService;
 
 @Service("purchaseServiceImpl")
 public class PurchaseServiceImpl implements PurchaseService {

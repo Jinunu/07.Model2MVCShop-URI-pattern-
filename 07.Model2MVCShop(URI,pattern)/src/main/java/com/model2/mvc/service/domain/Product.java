@@ -1,9 +1,10 @@
 package com.model2.mvc.service.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
-public class Product {
+public class Product implements Serializable{
 	
 	private String fileName;
 	private String manuDate;

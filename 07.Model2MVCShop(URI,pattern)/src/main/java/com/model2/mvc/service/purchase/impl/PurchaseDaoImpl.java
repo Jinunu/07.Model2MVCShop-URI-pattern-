@@ -1,4 +1,4 @@
-package com.model2.mvc.service.purcahse.impl;
+package com.model2.mvc.service.purchase.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Purchase;
-import com.model2.mvc.service.purcahse.PurchaseDao;
+import com.model2.mvc.service.purchase.PurchaseDao;
 @Repository("purchaseDaoImpl")
 public class PurchaseDaoImpl implements PurchaseDao {
 	

@@ -1,32 +1,5 @@
 <%@ page contentType="text/html; charset=euc-kr" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- 
-<%@ page import="java.util.*"  %>
-
-<%@ page import="com.model2.mvc.common.Search" %>
-<%@ page import="com.model2.mvc.service.product.vo.*" %>
-<%@page import="com.model2.mvc.common.Page"%>
-<%@page import="com.model2.mvc.common.util.CommonUtil"%>
-
-<%
-	System.out.println("리스트 jsp 시작");
-	List<ProductVO> list= (List<ProductVO>)request.getAttribute("list");
-	Page resultPage=(Page)request.getAttribute("resultPage");
-
-
-	Search search=(Search)request.getAttribute("search");
-	
-	String searchCondition = CommonUtil.null2str(search.getSearchCondition());
-	String searchKeyword = CommonUtil.null2str(search.getSearchKeyword());
-	
-	//String menu = (String)request.getAttribute("menu");
-	String menu = (String)session.getAttribute("menu");
-	System.out.println("list 세션  JSP의 : "+menu);
-%>
---%>  
- 
-
-
 
 
 <html>
@@ -52,7 +25,7 @@ function fncGetProductList(currentPage) {
 
 <div style="width:98%; margin-left:10px;">
 														
-<form name="detailForm" action="/listProduct.do?menu=${menu}" method="post">
+<form name="detailForm" action="/product/listProduct?menu=${menu}" method="post">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -149,7 +122,7 @@ function fncGetProductList(currentPage) {
 			<td align="center">${ i }</td>
 		<td></td>
 		<td align="left">
-			<a href="/getProduct.do?prodNo=${product.prodNo }&menu=${menu}">${product.prodName}</a>
+			<a href="/product/getProduct?prodNo=${product.prodNo }&menu=${menu}">${product.prodName}</a>
 		</td>
 		<td></td>
 		<td align="left">${product.price}</td>
@@ -172,7 +145,7 @@ function fncGetProductList(currentPage) {
 		<td align="left">판매중
 		</c:if>
 		<c:if test="${product.proTranCode=='0  '}">
-		<td align="left">구매완료 <a href="/updateTranCode.do?tranCode=${product.proTranCode}&prodNo=${product.prodNo}">배송하기</a>
+		<td align="left">구매완료 <a href="/purchase/updateTranCode?tranCode=${product.proTranCode}&prodNo=${product.prodNo}">배송하기</a>
 		</c:if>
 		<c:if test="${product.proTranCode=='1  '}">
 			<td align="left">배송중

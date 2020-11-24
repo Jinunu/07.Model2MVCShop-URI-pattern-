@@ -134,7 +134,7 @@
 						<td background="/images/ct_btnbg02.gif" class="ct_btn01"
 							style="padding-top: 3px;">
 							<a
-							href="/updatePurchaseView.do?tranNo=${purchase.tranNo}">수정</a>
+							href="/purchase/updatePurchase?tranNo=${purchase.tranNo}">수정</a>
 							
 						</td>
 						
