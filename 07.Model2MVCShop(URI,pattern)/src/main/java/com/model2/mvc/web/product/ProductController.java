@@ -1,5 +1,6 @@
 package com.model2.mvc.web.product;
 
+import java.io.File;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,12 +9,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.portlet.multipart.MultipartActionRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.model2.mvc.common.Page;
@@ -63,18 +67,25 @@ public class ProductController {
 	}
 	*/
 	@RequestMapping(value = "addProduct", method = RequestMethod.POST)
-	public ModelAndView addProduct( @ModelAttribute("produt") Product product ) throws Exception {
+	public ModelAndView addProduct( @ModelAttribute("product") Product product ,@RequestParam("file1") MultipartFile file) throws Exception {
 
 		System.out.println("/product/addProduct : POST");
 		//Business Logic
 		
-		ModelAndView modelAndView = new ModelAndView();
-		System.out.println(product.getManuDate());
-		String manuDate= product.getManuDate().replace("-", "");
-		product.setManuDate(manuDate);
-		System.out.println(product.getManuDate());
-		productService.addProduct(product);
 		
+		
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		  product.setManuDate(product.getManuDate().replace("-", ""));
+		  product.setFileName(file.getOriginalFilename());
+		  productService.addProduct(product);
+		  
+		  if(!file.getOriginalFilename().isEmpty()) {
+				file.transferTo(new File("C:\\Users\\admin\\git\\07.Model2MVCShop-URI-pattern-\\07.Model2MVCShop(URI,pattern)\\WebContent\\images\\uploadFiles",file.getOriginalFilename()));
+				
+			}
+		 
 		modelAndView.setViewName("forward:/product/listProduct?menu=manage");
 		
 		//return "forward:/listProduct.do?menu=manage";

@@ -44,14 +44,14 @@
 			addr 				= #{addr} ,
 			email				=	#{email}
 	   	</set>
-	   	WHERE user_id = #{userId}
+	   	WHERE user_id = #{userId:VARCHAR}
 	 </update>
 		 
 	<!-- SQL : SELECT LIST -->
 	<select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
 	  	SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT user_id , user_name , email
+	  					FROM		(	SELECT user_id , user_name , email, cell_phone
 											FROM users
 											<if test="searchCondition != null">
 												<where>
